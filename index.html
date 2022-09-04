@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing an API</title>
+</head>
+<body>
+    <p>Testing a <a href="https://labs.waterdata.usgs.gov/sta/v1.1">USGS API </a></p>
+    <script type="text/javascript">
+        var apiUrl = 'https://labs.waterdata.usgs.gov/sta/v1.1/'
+        fetch(apiUrl).then(response => {
+          return response.json()
+        }).then(data => {
+          console.log(data)
+          x = data['value'][8]['url']
+          console.log(x)
+          fetch(x).then(response => {
+          return response.json()
+        }).then(data => {
+          console.log(data)
+        })
+        })
+    </script>
+</body>
+</html>
